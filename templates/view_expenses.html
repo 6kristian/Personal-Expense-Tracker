@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Expenses - Personal Expense Tracker</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Expenses</h1>
+        <p>Below are your recorded expenses:</p>
+        
+        <!-- Display Expenses Table -->
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for expense in expenses %}
+                    <tr>
+                        <td>{{ expense['category'] }}</td>
+                        <td>${{ expense['amount'] }}</td>
+                        <td>{{ expense['date'] }}</td>
+                        <td>
+                            <a href="{{ url_for('delete_expense', id=expense['id']) }}" class="button">Delete</a>
+                            <a href="{{ url_for('edit_expenses', id=expense['id']) }}" class="button">Edit</a>
+                        </td>
+                        <td>{{ expense['description'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <!-- Back to Home Button -->
+        <a href="/home" class="button">Go back to dashboard</a>
+    </div>
+</body>
+<footer>
+        <p>Expense Tracker &copy; 2024. All rights reserved.</p>
+    </footer>
+</html>

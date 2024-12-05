@@ -1,0 +1,1 @@
+python C:\Users\User\python projects 2024\Personal Expense Tracker\scheduled_backup.py

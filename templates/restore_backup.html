@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restore Backup</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <h2>Restore Backup</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <label for="backup_file">Select a backup file:</label>
+        <br>
+        {% if backups %}
+            <select name="backup_file" id="backup_file" required>
+                {% for backup in backups %}
+                    <option value="{{ backup }}">{{ backup }}</option>
+                {% endfor %}
+            </select>
+        {% else %}
+            <p>No backups available.</p>
+        {% endif %}
+        <br><br>
+        <button type="submit">Restore Backup</button>
+    </form>
+</body>
+<a href="/home" class="button">Go back to dashboard</a>
+
+<footer>
+        <p>Expense Tracker &copy; 2024. All rights reserved.</p>
+    </footer>
+</html>

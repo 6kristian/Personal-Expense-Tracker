@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Expense - Personal Expense Tracker</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+ <div class="container">
+    <h1>Add Expense</h1>
+    
+    <!-- Display Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    
+    <form method="POST">
+        <!-- Expense Name Input -->
+        <label for="description">Description:</label>
+        <input type="text" name="description" id="description" placeholder="Enter description" required>
+
+        <!-- Expense Amount Input -->
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" name="amount" required>
+
+        <!-- Category Select Dropdown -->
+        <label for="category">Category</label>
+        <select id="category" name="category" required>
+            {% for category in categories %}
+                <option value="{{ category }}">{{ category }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+
+        <!-- Date Input -->
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required>
+
+        <!-- Submit Button -->
+        <button type="submit">Add Expense</button>
+    </form>
+
+</div>
+<a href="/home" class="button">Go back to dashboard</a>
+</body>
+<footer>
+        <p>Expense Tracker &copy; 2024. All rights reserved.</p>
+    </footer>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Tracker - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!-- Link to external CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Your Personal Expense Tracker</h1>
+        <p>Manage your expenses efficiently with our easy-to-use system.</p>
+        
+        <div class="button-container">
+            <form action="/add-expenses" method="get">
+                <button type="submit">Add Expense</button>
+            </form>
+            <form action="/view-expenses" method="get">
+                <button type="submit">View Expenses</button>
+            </form>
+            <form action="/summarize-expenses" method="get">
+                <button type="submit">Summarize Expenses</button>
+            </form> 
+            <form action="/backup" method="post">
+                <button type="submit">Backup</button>
+            </form>
+
+            <form action="/restore-backup" method="post">
+                <button type="submit">Restore Backup</button>
+            </form>
+            <form action="/logout" method="get">
+                <button type="submit" class="logout">Logout</button>
+            </form>
+        </div>
+    </div>
+</body>
+ <footer>
+        <p>Expense Tracker &copy; 2024. All rights reserved.</p>
+    </footer>
+</html>
+    
