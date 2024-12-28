@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+</head>
+<body>
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <header class="about-header">
+        <nav class="navbar">
+		    <div class="logo">Expense Tracker</div>
+			    <ul class="nav-links">
+				    <li><a href="/landing">Home</a></li>
+				    <li><a href="contact">Contact</a></li>
+			    </ul>
+                <div class="auth-buttons">
+                    <a href="/login" class = "btn btn-primary">Login</a>
+                    or
+                    <a href="/register" class = "btn btn-secondary">Register</a>
+                </div>
+		
+	    </nav>
+        
+    </header>
+
+    <main class="about-main">
+    <h1>About Us</h1>
+        <p>
+We are dedicated to simplifying personal finance management for everyone. Our goal is to provide an easy-to-use platform that empowers individuals to track their expenses, set financial goals, and make informed decisions. With a focus on transparency, security, and innovation, we strive to create a tool that adapts to your needs, helping you achieve financial freedom and stability.
+Whether you're managing a household budget or planning for your future, our platform is here to support you every step of the way.</p>
+        <section class="mission-section">
+            <h2>Our Mission</h2>
+            <p>At Personal Expense Tracker, we believe that financial freedom begins with understanding and control. Our journey started with a simple idea: to create a platform that empowers individuals to master their finances without stress or confusion. Inspired by the struggles of countless families and individuals trying to make sense of their spending, we set out to build a tool that transforms financial management into an intuitive and even enjoyable experience. Whether it's budgeting for a dream vacation, saving for a future milestone, or simply ensuring that the bills are paid on time, our mission is to provide a secure, user-friendly space where every transaction tells a story of progress.
+            With innovation at our core and our users at heart, we aim to make financial well-being accessible to everyone, one step at a time.</p>
+        </section>
+
+       <!-- Team Members Section -->
+<section class="team-section">
+  <h2 class="section-title">Meet the Team</h2>
+  <div class="team-container">
+    <div class="team-card">
+      <img src="https://via.placeholder.com/100" alt="John Doe">
+      <h3>John Doe</h3>
+      <p>Founder & CEO</p>
+    </div>
+    <div class="team-card">
+      <img src="https://via.placeholder.com/100" alt="John Smith">
+      <h3>John Smith</h3>
+      <p>Lead Developer</p>
+    </div>
+    <div class="team-card">
+      <img src="https://via.placeholder.com/100" alt="Emily Davis">
+      <h3>Emily Davis</h3>
+      <p>UI/UX Designer</p>
+    </div>
+    <div class="team-card">
+      <img src="https://via.placeholder.com/100" alt="Sarah Jones">
+      <h3>Sarah Jones</h3>
+      <p>Marketing Head</p>
+    </div>
+    <div class="team-card">
+      <img src="https://via.placeholder.com/100" alt="Mike Lee">
+      <h3>Mike Lee</h3>
+      <p>Financial Advisor</p>
+    </div>
+    <div class="team-card">
+      <img src="https://via.placeholder.com/100" alt="Anna Moore">
+      <h3>Anna Moore</h3>
+      <p>Content Creator</p>
+    </div>
+  </div>
+</section>
+
+    </main>
+
+    
+</body>
+<footer class="about-footer">
+        <p>&copy; 2024 Personal Expense Tracker. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+</html>

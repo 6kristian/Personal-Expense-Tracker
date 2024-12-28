@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Pricing</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='pricing.css') }}">
+   </head>
+   <header>
+    
+	<nav class="navbar">
+		<div class="logo">Expense Tracker</div>
+			<ul class="nav-links">
+				<li><a href="/about">About</a></li>
+				
+				<li><a href="/contact">Contact</a></li>
+			</ul>
+            <div class="auth-buttons">
+                <a href="/login" class = "btn btn-primary">Login</a>
+                or
+                <a href="/register" class = "btn btn-secondary">Register</a>
+            </div>
+		
+	</nav>
+</header>
+  
+   <body>
+      <div class="pricing-container">
+         <h1>Choose Your Plan</h1>
+         <div class="pricing-cards">
+            <!-- Free plan -->
+            <div class="card">
+               <h2>Free</h2>
+               <p class="price">$0<span>/month</span></p>
+               <ul>
+                  <li>Track up to 50 expenses</li>
+                  <li>Basic reporting</li>
+                  <li>Email support</li>
+               </ul>
+               <button onclick="showProcessing('Free')">Select Plan</button>
+            </div>
+            <!-- Premium plan -->
+            <div class="card">
+               <h2>Premium</h2>
+               <p class="price">$9.99<span>/month</span></p>
+               <ul>
+                  <li>Unlimited expenses</li>
+                  <li>Advanced reporting</li>
+                  <li>Priority email support</li>
+                  <li>Custom categories</li>
+               </ul>
+               <button onclick="showProcessing('Premium')">Select Plan</button>
+            </div>
+            <!-- Enterprise Plan -->
+            <div class="card">
+               <h2>Enterprise</h2>
+               <p class="price">$49.99<span>/month</span></p>
+               <ul>
+                  <li>Unlimited expenses</li>
+                  <li>Team collaboration</li>
+                  <li>Custom reports & dashboards</li>
+                  <li>Dedicated account manager</li>
+               </ul>
+               <button onclick="showProcessing('Enterprise')">Select Plan</button>
+            </div>
+         </div>
+      </div>
+      <p class="questions">If you're unsure about your specific needs or have questions, our sales department is here to help.<br> Feel free to reach out for guidance and personalized assistance.<br>Call 123-456-789 or email frrokuk2@gmail.com</p>
+
+
+     
+   </body>
+   
+<footer class="about-footer">
+        <p>&copy; 2024 Personal Expense Tracker. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+</html>

@@ -4,38 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Expense Tracker - Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!-- Link to external CSS -->
-</head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="manifest" href="/static/manifest.json">
+
+    </head>
 <body>
     <div class="container">
         <h1>Welcome to Your Personal Expense Tracker</h1>
         <p>Manage your expenses efficiently with our easy-to-use system.</p>
         
-        <div class="button-container">
-            <form action="/add-expenses" method="get">
+        <div class="menu-grid">
+            <form action="/add-expenses" method="get" class="menu-item">
                 <button type="submit">Add Expense</button>
             </form>
-            <form action="/view-expenses" method="get">
+            <form action="/view-expenses" method="get" class="menu-item">
                 <button type="submit">View Expenses</button>
             </form>
-            <form action="/summarize-expenses" method="get">
+            <form action="/summarize-expenses" method="get" class="menu-item">
                 <button type="submit">Summarize Expenses</button>
             </form> 
-            <form action="/backup" method="post">
+            <form action="/backup" method="post" class="menu-item">
                 <button type="submit">Backup</button>
             </form>
 
-            <form action="/restore-backup" method="post">
+            <form action="/restore-backup" method="post" class="menu-item">
                 <button type="submit">Restore Backup</button>
             </form>
-            <form action="/logout" method="get">
-                <button type="submit" class="logout">Logout</button>
+            <form action="/logout" method="get" class="menu-item">
+                <button type="submit" class="logout">Logout from {{username}}</button>
             </form>
+                
         </div>
     </div>
+
 </body>
  <footer>
         <p>Expense Tracker &copy; 2024. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </footer>
+<script src="sw.js"></script>
+
+
 </html>
     

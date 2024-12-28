@@ -14,7 +14,7 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 
@@ -72,62 +72,46 @@ def setup_database():
 
 # User registration
 def register_user():
-    """
-    Registers a new user by asking for a username and password,
-    hashing the password, and storing the data in the database.
-    """
-    # Prompt the user for input
     username = input("Enter a new username: ").strip()
     password = input("Enter a new password: ").strip()
 
-    # Validate inputs
     if not username or not password:
         print("Error: Username and password cannot be empty.")
         return
 
-    # Hash the password for secure storage
-    password_hash = hashlib.sha256(password.encode()).hexdigest()
+    # Hash the password
+    password_hash = generate_password_hash(password)
 
     try:
-        # Open a database connection
         with sqlite3.connect('expenses.db') as conn:
             cursor = conn.cursor()
-
-            # Insert the new user into the database
             cursor.execute(
-                "INSERT INTO users (username, password_hash) VALUES (?, ?)", 
+                "INSERT INTO users (username, password_hash) VALUES (?, ?)",
                 (username, password_hash)
             )
-            conn.commit()  # Save the changes
+            conn.commit()
             print("Registration successful!")
-    
     except sqlite3.IntegrityError:
-        # Handle the case where the username already exists
         print("Error: Username already exists. Please try a different one.")
-    
     except sqlite3.Error as e:
-        # Catch any other SQLite-related errors
         print(f"Database error: {e}")
-
 
 # User login
 def login_user():
-    username = input("Enter your username: ")
-    password = input("Enter your password: ")
-    password_hash = hashlib.sha256(password.encode()).hexdigest()
+    username = input("Enter your username: ").strip()
+    password = input("Enter your password: ").strip()
 
     with sqlite3.connect('expenses.db') as conn:
         cursor = conn.cursor()
-        cursor.execute("SELECT id FROM users WHERE username = ? AND password_hash = ?", (username, password_hash))
-        user = cursor.fetchone()
-        
+        cursor.execute("SELECT password_hash FROM users WHERE username = ?", (username,))
+        result = cursor.fetchone()
 
-    if user:
+    if result and check_password_hash(result[0], password):
         print("Login successful!")
-        return user[0]  # Return user ID
+        return True
     else:
         print("Invalid username or password.")
-        return None
+        return False
 
 
 # Add expense

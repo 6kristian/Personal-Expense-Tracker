@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}">
+  <title>Expense Tracker</title>
+</head>
+<body>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+  <!-- Header -->
+  <header>
+    
+	<nav class="navbar">
+		<div class="logo">Expense Tracker</div>
+			<ul class="nav-links">
+				<li><a href="#features">Features</a></li>
+				<li><a href="/about">About</a></li>
+				<li><a href="/pricing">Pricing</a></li>
+				<li><a href="/contact">Contact</a></li>
+			</ul>
+            <div class="auth-buttons">
+                <a href="/login" class = "btn btn-primary">Login</a>
+                or
+                <a href="/register" class = "btn btn-secondary">Register</a>
+            </div>
+		
+	</nav>
+</header>
+  
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Ready to Take Control of Your Spending?</h2>
+      <p>Join thousands managing their finances with intelligent insights and advanced features.</p>
+      <div class="cta-buttons">
+        <button class="button"><a href="/pricing">Try for free</a></button>  
+        
+      </div>
+    </div>
+  </section>
+  <section class="images-text">
+  <div class="image-text-section">
+  <img src="{{ url_for('static', filename='images/summarize_expenses.png') }}"alt="Financial Insights" class="section-image">
+  <div class="text-content">
+    <h1>Take Control of Your Finances</h1>
+    <p>With Expense Tracker, you can monitor your spending, gain valuable insights, and achieve your financial goals effortlessly. Start your journey today!</p>
+  </div>
+</div>
+
+<div class="image-text-section">
+<div class="text-content">
+    <h1>Painless budgeting
+</h1>
+    <p>It takes seconds to record daily transactions. Put them into clear and visualized categories such as Expense: Food, Shopping or Income: Salary, Gift</p>
+  </div>
+  <img src="{{ url_for('static', filename='images/edit_expenses.png') }}"alt="Edit Expenses" class="section-image">
+  
+</div>
+
+<div class="image-text-section">
+  <img src="{{ url_for('static', filename='images/register.png') }}"alt="Financial Insights" class="section-image">
+  <div class="text-content">
+    <h1>Quick and Easy Registration</h1>
+    <p>"Sign up in just a few steps to start tracking your expenses effortlessly.
+Your financial information is private and protected with top-tier security.</p>
+  </div>
+</div>
+</section>
+
+  <!-- Features Section --><div class="features-section" id="features">
+  <h2>Features Our Users Love</h2>
+  <div class="features-grid">
+    <div class="feature-item">
+      <h3>Multiple Devices</h3>
+      <p>Safely synchronize across devices with Bank standard security.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Recurring Transactions</h3>
+      <p>Get notified of recurring bills and transactions before due date.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Travel Mode</h3>
+      <p>All currencies supported with up-to-date exchange rate.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Saving Plan</h3>
+      <p>Keep track of savings progress to meet your financial goals.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Debt and Loan</h3>
+      <p>Manage your debts, loans, and payment processes in one place.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Effortless Transaction Entry</h3>
+      <p>Enter a transaction quickly and easily, manually or automatically.</p>
+    </div>
+  </div>
+</div>
+
+<section class="testimonials">
+	<h2>What Our Users Say</h2>
+
+		<div class="testimonials-grid">
+			<div class="testimonial-item">
+               <p>A simple, accessible app that allows you to budget across weeks, months and years. The neat financial calendar lets you set up alerts and keep tabs on all transactions. Plus, it works with all currencies.</p>
+               <h4>- Alex Johnson</h4>        
+             </div>
+			<div class="testimonial-item">
+                <p>Perfect app. My husband and I use it to track all our expenses and income. We generate our household accounts and budget using this fab app. Furthermore, the developers are hands-on and extremely helpful. Do not look any further. Get this app now!.</p>
+                <h4>- Sarah Williams</h4></div>
+			<div class="testimonial-item">
+                <p>This will keep you organized and in control, of money you do have and money you will have. This application is easy to use and will help you keep track of every dollar.</p>
+                <h4>- Michael Brown</h4></div>
+		</div>
+	
+</section>
+  <!-- CTA Section -->
+  <section class="cta-section" id = "cta-section">
+    <h2>Start Your Journey with Expense Tracker Now</h2>
+    <div class="cta-buttons">
+        <p>We are running an amazing promotion for first time users this month!</p>
+      <button class="button"><a href="/pricing">Claim It Now!</a></button>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+        <p>Expense Tracker &copy; 2024. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+    <script>
+// Get the button
+let mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+
+</body>
+</html>
+
+

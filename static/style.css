@@ -1,9 +1,17 @@
 /* General Reset */ 
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
     background-color: beige;
+    line-height:1.6;
 }
 
 header {
@@ -13,20 +21,58 @@ header {
 
 h1 {
     color: #333;
-    font-size: 2em;
+    font-size: 2.5em;
+    margin-bottom:10px;
     text-align: center;
 }
 
 h2 {
     text-align: center;
 }
+p{
+    text-align:center;
+    color:#666;
+}
 
 /* Table Styles */
+
+
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+button.logout {
+    background-color: #f44336;
+}
+
+button.logout:hover {
+    background-color: #e6392b;
+}
+
+
 table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
     background-color: white;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    border-radius:8px;
+    overflow:hidden;
+    font-size:16px;
+
 }
 
 table th, table td {
@@ -39,23 +85,29 @@ table th, table td {
 table th {
     background-color: #4CAF50;
     color: white;
-}
+    font-size:1.1em;
+}   
 
 table td:hover {
-    background-color: #f0f0f0; /* Hover effect for table rows */
+    background-color: #f9f9f9 /* Hover effect for table rows */
 }
+table td {
+    font-size: 0.95em;
+}   
 
 /* Button Styles */
 .button, .cancel, .form-actions a {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 25px;
     margin: 10px 0;
     color: white;
     text-decoration: none;
     border-radius: 5px;
     text-align: center;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth hover transition */
+    transition: background-color 0.3s ease-in-out;
+    box-shadow:0px 4px 6px rgba(0,0,0,0.1);
+
 }
 
 .button {
@@ -64,14 +116,26 @@ table td:hover {
 
 .button:hover {
     background-color: #45a049;
+    transform:scale(1.05);
 }
 
 .cancel {
     background-color: #f44336;
+    
 }
 
 .cancel:hover {
     background-color: #e6392b;
+    transform:scale(1.05);
+}
+a.cancel-button{
+    color:black;
+    display:block;
+   
+}
+a.cancel-button:hover {
+    background-color: #e6392b;
+    transform:scale(1.05);
 }
 
 /* Form Styles */
@@ -79,8 +143,8 @@ form {
     max-width: 450px;
     margin: 0 auto;
     background: #fff;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 25px;
+    border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -88,6 +152,7 @@ form label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
+    color:#333;
 }
 
 form input, form textarea, form button {
@@ -96,6 +161,11 @@ form input, form textarea, form button {
     margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    font-size:16px;
+}
+form input:focus, form textarea:focus{
+    border-color:#4caf50;
+    box-shadow:0 0 8px rgba(76, 175, 80, 0.3);
 }
 
 form input, form textarea {
@@ -117,19 +187,22 @@ button {
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+    padding: 12px 25px;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 8px 2px;
     cursor: pointer;
     border-radius: 8px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
     background-color: #45a049;
+    transform:scale(1.05);
+}
+button:focus {
+    outline:none;
+    box-shadow: 0 0 8px #4caf50;
 }
 
 .cancel {
@@ -141,32 +214,67 @@ button:hover {
 }
 footer {
   position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  
-  text-align: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    
+    
+    font-size: 0.9em;
+}
+footer a{
+    color:#4caf50;
+    text-decoration:none;
+}
+footer a:hover{
+    text-decoration:underline;
 }
 /* Responsive Layout */
 @media (max-width: 768px) {
-    body {
-        padding: 15px;
-    }
+  table {
+    font-size: 14px; /* Smaller font for smaller devices */
+  }
 
-    form {
-        width: 90%;
-    }
+  button.button,
+  button.cancel {
+    font-size: 14px; 
+    padding: 8px 12px; 
+  }
 
-    table {
-        font-size: 14px;
-    }
+  form {
+    width: 100%;
+    padding: 10px;
+  }
 
-    .container {
-        width: 100%;
-        padding: 10px;
-    }
+  h1 {
+    font-size: 1.8em;
+  }
 
-    h1 {
-        font-size: 1.5em;
-    }
+  .container {
+    padding: 5px;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Mobile first adjustments */
+  h1 {
+    font-size: 1.5em;
+  }
+
+  button.button,
+  button.cancel {
+    padding: 6px 10px;
+  }
+
+  table,
+  form {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  p {
+    font-size: 14px;
+  }
 }

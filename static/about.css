@@ -1,0 +1,257 @@
+/* General Reset */
+
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  
+}
+/* Global Styles */
+body, ul, li, a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding:10px 20px;
+}
+
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-links li {
+  display: inline;
+  
+}
+
+.nav-links a {
+  color: white;
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #4CAF50; /* Matches your button color */
+}
+
+.auth-buttons .btn {
+  color: white;
+  padding: 8px 12px;
+  border: 1px solid white;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.auth-buttons .btn-primary {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.auth-buttons .btn:hover {
+  background-color: white;
+  color: #333;
+}
+/* About Section */
+.about-header {
+  text-align: center;
+  padding: 20px 10px;
+  background-color: #333; 
+  color: white;
+}
+
+
+.about-header h1 {
+  font-size: 2.5rem;
+  color: #2c8d47;
+  margin-bottom: 10px;
+}
+
+.about-main {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+.about-main {
+	text-align:center;
+	color:#2c8d47;
+	margin-bottom:15px;
+}
+
+.about-main p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  margin: 15px auto;
+  text-align: center;
+  text-wrap: balance;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#myBtn:hover {
+  background-color: #45a049;
+}
+/* Mission and Values Section */
+.mission-section, .values-section {
+  margin-bottom: 30px;
+}
+
+.mission-section h2, .values-section h2 {
+  font-size: 2rem;
+  color: #2c8d47;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.mission-section p, .values-section ul li {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.8;
+  margin: 10px auto;
+  text-align: center;
+  
+  
+}
+
+.values-section ul {
+  list-style: none;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+}
+
+.values-section ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.values-section ul li strong {
+  color: #2c8d47;
+}
+
+/* Team Section */
+.team-section {
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.team-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.team-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.team-card h3 {
+  font-size: 18px;
+  margin: 8px 0;
+  color: #333;
+}
+
+.team-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer Section */
+footer {
+  position: flex;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  font-size: 0.9em;
+  padding: 10px 0;
+}
+
+footer a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+   
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 20px;
+    margin-top:20px;
+  }
+
+  .auth-buttons {
+    margin-top: 30px;
+  }
+  .testimonials-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

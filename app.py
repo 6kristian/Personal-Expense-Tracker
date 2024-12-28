@@ -1,6 +1,7 @@
 from ast import Try
 from pydoc import describe
-from flask import Flask, render_template, request, redirect, url_for, flash, session,send_file
+from flask import Flask, render_template, request, redirect, url_for, flash, session,send_file,send_from_directory,jsonify
+from flask_mail import Mail, Message
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 import hashlib
@@ -10,12 +11,21 @@ import shutil
 import os
 import datetime
 
-
+if not os.path.exists('expenses.db'):
+    raise FileNotFoundError("Database file 'expenses.db' not found.Run 'initialize_db.py' to create it.")
 # Define the database file location
 db_file = r"C:\Users\User\python projects 2024\Personal Expense Tracker\expenses.db"
 
 # Initialize Flask app
 app = Flask(__name__)
+# Configure Flask-Mail
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USERNAME'] = 'frrokuk2@gmail.com'  # Replace with your email
+app.config['MAIL_PASSWORD'] = 'dird fiyb xerf rtrx'   # Replace with your app password or email password
+mail = Mail(app)
 
 # Set a secret key for flash messages and session handling
 app.secret_key = secrets.token_hex(16)  # Change to a secure random key
@@ -38,6 +48,74 @@ def get_expenses():
 # Home route: Displays the dashboard after login
 @app.route('/')
 
+
+@app.route('/landing')
+def landing_page():
+    # Render the landing page HTML
+    return render_template('landing_page.html')
+@app.route('/about')
+def about_page():
+    return render_template('about.html')
+
+@app.route('/contact')
+def contact_page():
+    return render_template('contact.html')
+
+@app.route('/send-email', methods=['POST'])
+def send_email():
+    name = request.form['name']
+    email = request.form['email']
+    message_content = request.form['message']
+
+    #create email
+    msg = Message(subject=f"Message from {name}",sender=email,recipients=['frrokuk2@gmail.com'],body=message_content)
+
+    #send the email
+    mail.send(msg)
+    return "Email sent Successfully!"
+@app.route('/pricing', methods=['GET'])
+def pricing_page():
+    with sqlite3.connect('expenses.db') as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT name,price,features FROM plans")
+        plans = cursor.fetchall()
+
+        pricing_data = [
+        {
+            "name": "Free",
+            "price": 0.0,
+            "features": [
+                "Track up to 50 expenses",
+                "Basic reporting",
+                "Email support"
+            ]
+        },
+        {
+            "name": "Premium",
+            "price": 9.99,
+            "features": [
+                "Unlimited expenses",
+                "Advanced reporting",
+                "Priority email support",
+                "Custom categories"
+            ]
+        },
+        {
+            "name": "Enterprise",
+            "price": 49.99,
+            "features": [
+                "Unlimited expenses",
+                "Team collaboration",
+                "Custom reports & dashboards",
+                "Dedicated account manager"
+            ]
+        }
+    ]
+
+           
+
+        
+    return render_template('pricing.html', pricing_data=pricing_page)
 
 @app.route('/home')
 def home():
@@ -88,6 +166,8 @@ def register():
             flash(f"Database error: {e}","error")
         finally:
             conn.close()
+
+        return render_template('home.html')
 
     return render_template('register.html')  # Render the registration page if GET request
 
@@ -441,7 +521,5 @@ def logout():
 
 # Run the Flask app
 if __name__ == "__main__":
-     app.run(host='0.0.0.0', port=5000)
-
-   # app.run(debug=True)
-    
+     app.run(host='0.0.0.0', port=5000,debug=True)
+      
