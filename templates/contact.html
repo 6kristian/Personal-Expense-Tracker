@@ -23,13 +23,22 @@
 	</nav>
     </div>
 <body>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="alert alert-info">
+      {% for category, msg in messages %}
+        <p>{{ msg }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
   <header class="header">
     <h1>Contact Us</h1>
     <p>We would love to hear from you! Please fill out the form below.</p>
   </header>
 
   <main class="contact-main">
-    <form class="contact-form" action="http://127.0.0.1:5000/send-email" method="POST">
+    <form class="contact-form" action="{{ url_for('send_email') }}" method="POST">
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Your Name" required>

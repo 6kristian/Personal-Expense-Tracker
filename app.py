@@ -6,6 +6,8 @@ import secrets
 import datetime
 import shutil
 import numpy as np
+import logging
+logging.basicConfig(level=logging.ERROR)
 
 from flask import (Flask, render_template, request, redirect,
                    url_for, flash, session, jsonify)
@@ -105,15 +107,29 @@ def contact_page():
 
 @app.route('/send-email', methods=['POST'])
 def send_email():
-    name    = request.form['name']
-    email   = request.form['email']
-    message = request.form['message']
-    msg = Message(subject=f"Message from {name}",
-                  sender=email,
-                  recipients=['frrokuk2@gmail.com'],
-                  body=message)
-    mail.send(msg)
-    return "Email sent successfully!"
+    name    = request.form.get('name', '').strip()
+    email   = request.form.get('email', '').strip()
+    subject = request.form.get('subject', '').strip()
+    message = request.form.get('message', '').strip()
+
+    if not all([name, email, message]):
+        flash('Please fill in all required fields.', 'warning')
+        return redirect(url_for('contact_page'))
+
+    try:
+        msg = Message(
+            subject=f"Contact: {subject or 'No subject'}",
+            sender=email,
+            recipients=['frrokuk2@gmail.com'],
+            body=f"Name: {name}\nE-mail: {email}\nSubject: {subject}\n\nMessage:\n{message}"
+        )
+        mail.send(msg)
+        flash('Thank you! Your message has been sent.', 'success')
+    except Exception as e:
+        app.logger.error(f"Contact mail failed: {e}")
+        flash('Sorry, the message could not be sent. Please try again later.', 'danger')
+
+    return redirect(url_for('contact_page'))
 
 @app.route('/pricing')
 def pricing_page():
