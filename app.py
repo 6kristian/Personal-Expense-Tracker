@@ -12,6 +12,8 @@ logging.basicConfig(level=logging.ERROR)
 from flask import (Flask, render_template, request, redirect,
                    url_for, flash, session, jsonify)
 from flask_mail import Mail, Message
+from dotenv import load_dotenv
+load_dotenv()  # load .env file
 
 # -------------------------------------------------
 # 1.  ONE PLACE TO STORE THE DATABASE FILE
@@ -31,9 +33,10 @@ app = Flask(__name__)
 app.config['MAIL_SERVER']   = 'smtp.gmail.com'
 app.config['MAIL_PORT']     = 587
 app.config['MAIL_USE_TLS']  = True
-app.config['MAIL_DEFAULT_SENDER'] = 'frrokuk2@gmail.com'
-app.config['MAIL_USERNAME'] = 'frrokuk2@gmail.com'
-app.config['MAIL_PASSWORD'] = 'xxxxxxxxxxxxxxxxx'   # 16digit app password
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_USERNAME')
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 mail = Mail(app)
 
 app.secret_key = secrets.token_hex(16)
