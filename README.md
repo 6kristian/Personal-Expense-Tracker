@@ -6,7 +6,7 @@
 ![Docker](https://img.shields.io/badge/run-docker-2496ed)
 
 Flask + SQLite web app that lets users register, log in, add/view/edit/delete expenses, see spending summaries, and back-up/restore their data.
-
+HOSTING LIVE: https://personal-expense-tracker-enzs.onrender.com/landing
 ## Quick start
 ```bash
 python -m venv venv
