@@ -1,5 +1,10 @@
 # Personal Expense Tracker
 
+![Python](https://img.shields.io/badge/python-3.11-blue)
+![Flask](https://img.shields.io/badge/web-flask-green)
+![SQLite](https://img.shields.io/badge/db-sqlite-lightgrey)
+![Docker](https://img.shields.io/badge/run-docker-2496ed)
+
 Flask + SQLite web app that lets users register, log in, add/view/edit/delete expenses, see spending summaries, and back-up/restore their data.
 
 ## Quick start
@@ -13,7 +18,3 @@ Browse to http://127.0.0.1:5000
 
 
 
-![Python](https://img.shields.io/badge/python-3.11-blue)
-![Flask](https://img.shields.io/badge/web-flask-green)
-![SQLite](https://img.shields.io/badge/db-sqlite-lightgrey)
-![Docker](https://img.shields.io/badge/run-docker-2496ed)
