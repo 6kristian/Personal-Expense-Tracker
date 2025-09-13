@@ -10,6 +10,9 @@ pip install flask flask-mail
 python app.py
 
 Browse to http://127.0.0.1:5000
+
+
+
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![Flask](https://img.shields.io/badge/web-flask-green)
 ![SQLite](https://img.shields.io/badge/db-sqlite-lightgrey)
