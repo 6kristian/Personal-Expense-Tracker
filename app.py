@@ -29,8 +29,9 @@ app = Flask(__name__)
 app.config['MAIL_SERVER']   = 'smtp.gmail.com'
 app.config['MAIL_PORT']     = 587
 app.config['MAIL_USE_TLS']  = True
+app.config['MAIL_DEFAULT_SENDER'] = 'frrokuk2@gmail.com'
 app.config['MAIL_USERNAME'] = 'frrokuk2@gmail.com'
-app.config['MAIL_PASSWORD'] = 'dird fiyb xerf rtrx'   # app password
+app.config['MAIL_PASSWORD'] = 'xxxxxxxxxxxxxxxxx'   # 16digit app password
 mail = Mail(app)
 
 app.secret_key = secrets.token_hex(16)
@@ -77,6 +78,12 @@ def init_db():
         """)
 init_db()          # <─ runs once every start-up (safe: IF NOT EXISTS)
 
+# Add email column to users table if missing
+with get_conn() as conn:
+    try:
+        conn.execute("ALTER TABLE users ADD COLUMN email TEXT;")
+    except sqlite3.OperationalError:
+        pass  # column already exists – ignore
 # -------------------------------------------------
 # 4.  ROUTES
 # -------------------------------------------------
