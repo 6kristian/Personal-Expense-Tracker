@@ -338,4 +338,5 @@ def restore_backup():
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
-    app.run(debug=True)
+    #app.run(debug=True)          # local dev
+    app.run()              # production mode
