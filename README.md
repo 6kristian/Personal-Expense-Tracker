@@ -16,6 +16,37 @@ python app.py
 
 Browse to http://127.0.0.1:5000
 ```
+
+### ✨ Core Features
+- 🧾 **Report Automation** – Generate and email personalized monthly expense PDFs automatically.  
+- 🛡️ **Data Integrity** – Verify database schemas and perform scheduled backups for safety.  
+- ☁️ **Cloud Integration** – Seamlessly interact with Google Drive via OAuth for secure storage.  
+- 🌐 **Web Interface** – Built with Flask, featuring expense entry, registration, and visualization.  
+- ⚙️ **Developer Friendly** – Modular codebase, schema management, and deployment setup.  
+
+---
+## 🛠️ Getting Started
+
+### 📋 Prerequisites
+Make sure you have the following installed:  
+- **Python 3.x**  
+- **pip** (Python package manager)  
+
+---
+### ⚙️ Installation
+Clone the repository and install dependencies:
+
+```bash
+# Clone the repo
+git clone https://github.com/6kristian/Personal-Expense-Tracker
+
+# Navigate to project folder
+cd Personal-Expense-Tracker
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
 Monthly PDF Report Feature – Complete Docs Pack
 (copy/paste into README, wiki, or GitHub release notes)
 1. What it does
